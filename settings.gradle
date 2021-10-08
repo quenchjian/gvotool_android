@@ -1,0 +1,3 @@
+rootProject.name = "gvotool_android"
+include ":app"
+include ":poishadow"

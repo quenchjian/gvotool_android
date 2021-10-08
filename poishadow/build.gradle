@@ -1,0 +1,45 @@
+plugins {
+  id "java-library"
+  id "com.github.johnrengelman.shadow" version "7.1.0"
+}
+
+java {
+  sourceCompatibility = JavaVersion.VERSION_1_8
+  targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+  implementation 'org.apache.poi:poi-ooxml:4.0.1'
+  implementation 'com.fasterxml:aalto-xml:1.3.0'
+  implementation 'stax:stax-api:1.0.1'
+}
+
+shadowJar {
+  archiveBaseName.set("poi-ooxml-shadow")
+  archiveClassifier.set("")
+  archiveVersion.set("")
+
+  exclude 'repackage/**'
+  exclude 'LICENSE.txt'
+  exclude 'NOTICE.txt'
+  exclude 'META-INF/LICENSE'
+  exclude 'META-INF/LICENSE.txt'
+  exclude 'META-INF/NOTICE'
+  exclude 'META-INF/NOTICE.txt'
+  exclude 'META-INF/maven/**'
+
+  // these are only needed when handling Visio files, remove it if you would like to use Visio support
+  dependencies {
+    exclude(dependency('com.github.virtuald:curvesapi'))
+    exclude(dependency('commons-codec:commons-codec'))
+    exclude(dependency('commons-codec:commons-collections4'))
+  }
+
+  // Relocate javax dependencies so Android does not choke
+  relocate 'javax.xml.namespace', 'org.apache.poi.javax.xml.namespace'
+  relocate 'javax.xml.stream', 'org.apache.poi.javax.xml.stream'
+  relocate 'javax.xml.XMLConstants', 'org.apache.poi.javax.xml.XMLConstants'
+}
+
+jar.dependsOn shadowJar
+test.dependsOn shadowJar
