@@ -1,2 +1,2 @@
-# gvotool_android
+# GVOTool for Android
 Great voyage online tool
