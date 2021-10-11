@@ -4,17 +4,33 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import com.zhuinden.simplestack.navigator.DefaultStateChanger
 import com.zhuinden.simplestack.navigator.Navigator
-import me.quenchjian.gvotool.navigation.NavKey
+import dagger.hilt.android.AndroidEntryPoint
+import me.quenchjian.gvotool.ui.importdata.ImportScreen
+import me.quenchjian.gvotool.ui.mvvm.MvvmBinder
+import me.quenchjian.gvotool.ui.mvvm.ViewModelFactory
+import me.quenchjian.gvotool.ui.navigation.NavKey
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+  @Inject lateinit var vmFactory: ViewModelFactory
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
-    Navigator.install(this, findViewById(R.id.activity_container), intent.initStack)
+    val container: ViewGroup = findViewById(R.id.activity_container)
+    Navigator
+      .configure()
+      .setStateChanger(DefaultStateChanger.configure()
+        .setViewChangeCompletionListener(MvvmBinder(savedStateRegistry, vmFactory))
+        .create(this, container))
+      .install(this, container, intent.initStack)
     onBackPressedDispatcher.addCallback(BackPressHandler(this))
   }
 
@@ -29,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
   companion object {
     private var Intent.initStack: List<NavKey>
-      get() = getParcelableArrayListExtra("intent-extra-init-stack") ?: emptyList()
+      get() = getParcelableArrayListExtra("intent-extra-init-stack") ?: listOf(ImportScreen())
       set(value) {
         putParcelableArrayListExtra("intent-extra-init-stack", ArrayList(value))
       }
