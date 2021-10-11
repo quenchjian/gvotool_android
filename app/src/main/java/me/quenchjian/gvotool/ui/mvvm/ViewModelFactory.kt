@@ -2,7 +2,7 @@ package me.quenchjian.gvotool.ui.mvvm
 
 import me.quenchjian.gvotool.ui.importdata.ImportScreen
 import me.quenchjian.gvotool.ui.importdata.ImportViewModel
-import me.quenchjian.gvotool.ui.navigation.NavKey
+import me.quenchjian.gvotool.ui.navigation.Screen
 import javax.inject.Inject
 import javax.inject.Provider
 
@@ -11,7 +11,7 @@ class ViewModelFactory @Inject constructor(
 ) {
 
   @Suppress("unchecked_cast")
-  fun <T : ViewModel> create(key: NavKey): T {
+  fun <T : ViewModel> create(key: Screen): T {
     return when (key) {
       is ImportScreen -> importVM.get()
       else -> throw IllegalArgumentException("unknown $key to create")

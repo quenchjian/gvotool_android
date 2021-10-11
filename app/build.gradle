@@ -47,28 +47,35 @@ android {
   }
 }
 
+preBuild.dependsOn ":poishadow:shadowJar"
+
 dependencies {
   coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
-  // kotlin dependency
+  // kotlin
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1"
   implementation "androidx.core:core-ktx:1.6.0"
-  // dependency-injection dependency
+  // dependency-injection
   implementation "com.google.dagger:hilt-android:$dagger_version"
   kapt "com.google.dagger:hilt-compiler:$dagger_version"
-  // tools dependency
+  // debug tools
   implementation "com.jakewharton.timber:timber:5.0.1"
   debugImplementation "com.squareup.leakcanary:leakcanary-android:2.7"
+  // navigation
   implementation "com.github.Zhuinden:simple-stack:2.6.2"
-  implementation project(path: ":poishadow", configuration: "shadow")
-  // android dependency
+  // database
+  implementation "androidx.room:room-ktx:2.3.0"
+  kapt "androidx.room:room-compiler:2.3.0"
+  // android
   implementation "androidx.lifecycle:lifecycle-common-java8:2.3.1"
   implementation "androidx.appcompat:appcompat:1.3.1"
   implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
   implementation "com.google.android.material:material:1.4.0"
-  // unit test dependency
+  // other tools
+  implementation files("../poishadow/build/libs/poi-ooxml-shadow.jar")
+  // unit test
   testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
-  // android test dependency
+  // android test
   androidTestImplementation "androidx.test.ext:junit:1.1.3"
   androidTestImplementation "androidx.test.espresso:espresso-core:3.4.0"
   androidTestImplementation "androidx.test.espresso:espresso-contrib:3.4.0"

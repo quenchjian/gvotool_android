@@ -7,7 +7,7 @@ import com.zhuinden.simplestack.navigator.changehandlers.FadeViewChangeHandler
 import com.zhuinden.simplestack.navigator.changehandlers.NoOpViewChangeHandler
 import com.zhuinden.simplestack.navigator.changehandlers.SegueViewChangeHandler
 
-abstract class NavKey(
+abstract class Screen(
   private val animation: ScreenAnimation = ScreenAnimation.NONE,
 ) : DefaultViewKey, Parcelable {
 

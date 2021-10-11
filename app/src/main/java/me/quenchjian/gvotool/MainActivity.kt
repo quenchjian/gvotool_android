@@ -13,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import me.quenchjian.gvotool.ui.importdata.ImportScreen
 import me.quenchjian.gvotool.ui.mvvm.MvvmBinder
 import me.quenchjian.gvotool.ui.mvvm.ViewModelFactory
-import me.quenchjian.gvotool.ui.navigation.NavKey
+import me.quenchjian.gvotool.ui.navigation.Screen
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -44,13 +44,13 @@ class MainActivity : AppCompatActivity() {
   }
 
   companion object {
-    private var Intent.initStack: List<NavKey>
+    private var Intent.initStack: List<Screen>
       get() = getParcelableArrayListExtra("intent-extra-init-stack") ?: listOf(ImportScreen())
       set(value) {
         putParcelableArrayListExtra("intent-extra-init-stack", ArrayList(value))
       }
 
-    fun intent(context: Context, vararg stack: NavKey): Intent {
+    fun intent(context: Context, vararg stack: Screen): Intent {
       return Intent.makeMainActivity(ComponentName(context, MainActivity::class.java)).apply {
         initStack = stack.asList()
       }

@@ -1,31 +1,33 @@
 package me.quenchjian.gvotool.ui.importdata
 
-import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import me.quenchjian.gvotool.concurrent.WorkThread
 import me.quenchjian.gvotool.ui.mvvm.ViewModel
 import timber.log.Timber
+import java.io.InputStream
 import javax.inject.Inject
 
-class ImportViewModel @Inject constructor() : ViewModel(), CoroutineScope by MainScope() {
+class ImportViewModel @Inject constructor(
+  workThread: WorkThread,
+  private val importDiscovery: ImportDiscovery,
+) : ViewModel(workThread) {
 
   val importing: LiveData<Boolean> = MutableLiveData()
   val importError: LiveData<Throwable> = MutableLiveData()
 
-  fun importExcel(uri: Uri?) {
+  fun importExcel(inputStream: InputStream?) {
     Timber.tag("MVVM").d("import excel")
-    uri ?: return
+    inputStream ?: return
     launch {
       (importing as MutableLiveData).postValue(true)
-      withContext(Dispatchers.IO) { delay(1000) }
+      val result = withContext(workThread.io) { importDiscovery(inputStream) }
       importing.postValue(false)
-      (importError as MutableLiveData).postValue(NotImplementedError("Not Implemented!!"))
+      if (result.isFailure) {
+        (importError as MutableLiveData).postValue(result.exceptionOrNull())
+      }
     }
   }
 }

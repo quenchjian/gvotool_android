@@ -10,7 +10,7 @@ import me.quenchjian.gvotool.ui.events.onAttach
 import me.quenchjian.gvotool.ui.events.onDetach
 import me.quenchjian.gvotool.ui.importdata.ImportScreen
 import me.quenchjian.gvotool.ui.importdata.ImportView
-import me.quenchjian.gvotool.ui.navigation.NavKey
+import me.quenchjian.gvotool.ui.navigation.Screen
 import timber.log.Timber
 
 /**
@@ -29,7 +29,7 @@ class MvvmBinder(
     completionCallback: DefaultStateChanger.ViewChangeCompletionListener.Callback,
   ) {
     completionCallback.viewChangeComplete()
-    val key: NavKey = stateChange.topNewKey()
+    val key: Screen = stateChange.topNewKey()
     Timber.tag("MVVM").d("create View and ViewModel for ${key.name}")
     when (key) {
       is ImportScreen -> bind(ImportView(newView, factory.create(key)))
