@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/form_character"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/form_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="80dp" />
+
+        <TextView
+            android:id="@+id/label_character_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/label_character_account"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_character_account"
+            app:layout_constraintEnd_toEndOf="@+id/form_guideline"
+            app:layout_constraintTop_toTopOf="@+id/edit_character_account" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_character_account"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:hint="@string/hint_character_account"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/form_guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/label_character_server"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/label_character_server"
+            app:layout_constraintBottom_toBottomOf="@+id/spinner_character_server"
+            app:layout_constraintEnd_toEndOf="@+id/form_guideline"
+            app:layout_constraintTop_toTopOf="@+id/spinner_character_server" />
+
+        <Spinner
+            android:id="@+id/spinner_character_server"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:entries="@array/servers"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/form_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/edit_character_account" />
+
+        <TextView
+            android:id="@+id/label_character_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/label_character_name"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_character_name"
+            app:layout_constraintEnd_toEndOf="@+id/form_guideline"
+            app:layout_constraintTop_toTopOf="@+id/edit_character_name" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_character_name"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:hint="@string/hint_character_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/form_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_character_server" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_character_name" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -5,7 +5,7 @@ import me.quenchjian.gvotool.R
 import me.quenchjian.gvotool.ui.navigation.Screen
 
 @Parcelize
-class ImportScreen : Screen() {
+object ImportScreen : Screen() {
 
-  override fun layout(): Int = R.layout.view_importexcel
+  override fun layout(): Int = R.layout.view_importdiscovery
 }

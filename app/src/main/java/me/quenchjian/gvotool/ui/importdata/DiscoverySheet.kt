@@ -1,6 +1,6 @@
 package me.quenchjian.gvotool.ui.importdata
 
-import me.quenchjian.gvotool.database.entity.Discovery
+import me.quenchjian.gvotool.data.entity.Discovery
 
 enum class DiscoverySheet(
   val sheetName: String,

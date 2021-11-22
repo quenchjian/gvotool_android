@@ -1,13 +1,17 @@
 package me.quenchjian.gvotool.ui.mvvm
 
-import kotlinx.coroutines.CoroutineScope
-import me.quenchjian.gvotool.concurrent.WorkThread
-import kotlin.coroutines.CoroutineContext
+import androidx.lifecycle.MutableLiveData
 
 /**
  * ViewModel for MVVM architecture
  */
-abstract class ViewModel(val workThread: WorkThread) : CoroutineScope {
+abstract class ViewModel : androidx.lifecycle.ViewModel() {
+  open fun setup() {}
+  open fun dispose() {}
 
-  override val coroutineContext: CoroutineContext = workThread.ui
+  open class Observer<T : Any>(private val liveData: MutableLiveData<State<T>>) : State.Observer<T> {
+    override fun onStateChange(state: State<T>) {
+      liveData.value = state
+    }
+  }
 }

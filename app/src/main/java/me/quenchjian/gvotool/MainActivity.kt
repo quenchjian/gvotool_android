@@ -10,10 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.zhuinden.simplestack.navigator.DefaultStateChanger
 import com.zhuinden.simplestack.navigator.Navigator
 import dagger.hilt.android.AndroidEntryPoint
-import me.quenchjian.gvotool.ui.importdata.ImportScreen
 import me.quenchjian.gvotool.ui.mvvm.MvvmBinder
 import me.quenchjian.gvotool.ui.mvvm.ViewModelFactory
 import me.quenchjian.gvotool.ui.navigation.Screen
+import me.quenchjian.gvotool.ui.splash.SplashScreen
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         .setViewChangeCompletionListener(MvvmBinder(savedStateRegistry, vmFactory))
         .create(this, container))
       .install(this, container, intent.initStack)
+    ActivityResultFragment.init(this)
     onBackPressedDispatcher.addCallback(BackPressHandler(this))
   }
 
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
   companion object {
     private var Intent.initStack: List<Screen>
-      get() = getParcelableArrayListExtra("intent-extra-init-stack") ?: listOf(ImportScreen())
+      get() = getParcelableArrayListExtra("intent-extra-init-stack") ?: listOf(SplashScreen)
       set(value) {
         putParcelableArrayListExtra("intent-extra-init-stack", ArrayList(value))
       }

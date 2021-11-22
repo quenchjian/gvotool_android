@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_statistics"
+        android:icon="@drawable/ic_discovery"
+        android:title="@string/dashboard_statistics" />
+    <item
+        android:id="@+id/action_discovery"
+        android:icon="@drawable/ic_anchor"
+        android:title="@string/dashboard_discoveries" />
+    <item
+        android:id="@+id/action_management"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/dashboard_management" />
+</menu>

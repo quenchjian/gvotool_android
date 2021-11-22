@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/view_import_discovery"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="8dp">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_import_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Import Excel to construct discovery database"
+        android:text="@string/import_discovery_description"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -17,8 +21,18 @@
         android:id="@+id/button_import"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="import"
+        android:text="@string/button_import_discovery"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_import_description" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/text_import_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/import_done" />
 </androidx.constraintlayout.widget.ConstraintLayout>

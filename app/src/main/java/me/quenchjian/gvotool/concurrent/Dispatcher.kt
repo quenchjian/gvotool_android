@@ -10,7 +10,7 @@ import javax.inject.Singleton
 import kotlin.coroutines.CoroutineContext
 
 @Singleton
-class WorkThread @Inject constructor() {
+class Dispatcher @Inject constructor() {
 
   private val executor = Executors.newCachedThreadPool() as ThreadPoolExecutor
 
@@ -19,5 +19,5 @@ class WorkThread @Inject constructor() {
   }
 
   val io: CoroutineContext = executor.asCoroutineDispatcher()
-  val ui: CoroutineContext = SupervisorJob() + Dispatchers.Main
+  val main: CoroutineContext = SupervisorJob() + Dispatchers.Main
 }

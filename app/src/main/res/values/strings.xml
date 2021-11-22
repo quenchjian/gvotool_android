@@ -1,4 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">GVO Tool</string>
+    <string name="app_name">GVO工具</string>
+    <string name="splash_description">資料庫無任何資料，是否要開始建立資料</string>
+    <string name="button_skip">略過</string>
+    <string name="button_done">完成</string>
+    <string name="tab_character">遊戲人物</string>
+    <string name="tab_discovery">發現物清單</string>
+    <string name="menu_character">管理遊戲人物</string>
+    <string name="menu_discovery">管理發現物清單</string>
+    <string name="button_add_character">新增遊戲人物</string>
+    <string name="button_edit">修改</string>
+    <string name="button_import_discovery">匯入發現物清單</string>
+    <string name="import_discovery_description">目前僅支援使用<a href="https://dolanselnote.home.blog/">安瑟兒的航行筆記</a>提供的 Excel 發現物統計檔案(本 app 不提供檔案請自行下載)來匯入，若無法取得檔案只能手動新增。</string>
+    <string name="import_done">匯入發現物清單完成！</string>
+    <string name="import_fail">匯入發現物清單失敗(%s)</string>
+    <string name="label_character_account">帳號</string>
+    <string name="label_character_server">伺服器</string>
+    <string name="label_character_name">人物名稱</string>
+    <string name="hint_character_account">輸入登入遊戲的帳號</string>
+    <string name="hint_character_server">選擇伺服器</string>
+    <string name="hint_character_name">輸入人物名稱</string>
+    <string name="text_characters_empty">尚未新增任何遊戲人物</string>
+    <string name="button_save">儲存</string>
+    <string name="busy_adding">正在新增…</string>
+    <string name="busy_importing">匯入中…</string>
+    <string name="dashboard_statistics">發現物統計</string>
+    <string name="dashboard_discoveries">發現物清單</string>
+    <string name="dashboard_management">系統管理</string>
+    <string name="menu_character_chooser">切換遊戲人物</string>
+    <string name="text_medal">累積功績 %d</string>
+    <string name="text_rank_adventure">冒險爵位等級 %d</string>
+    <string name="head_discovery_type">發現物類別</string>
+    <string name="head_discovery_total">總數</string>
+    <string name="head_discovery_discovered">發現數</string>
+    <string name="head_discovery_version">版本</string>
+    <string name="head_discovery_star">★</string>
+    <string name="head_discovery_name">發現物</string>
+    <string name="head_discovery_task">任務/地圖</string>
+    <string name="head_discovery_merit">功績</string>
+    <string name="head_discovery_card">牌點</string>
+    <string name="head_discovery_select">全選</string>
+
+    <string-array name="servers">
+        <item>戰列艦</item>
+        <item>幽靈船</item>
+        <item>探索號</item>
+        <item>護衛艦</item>
+    </string-array>
+    <string-array name="discovery_types">
+        <item>史跡</item>
+        <item>宗教建築</item>
+        <item>歷史遺物</item>
+        <item>宗教遺物</item>
+        <item>美術品</item>
+        <item>寶藏</item>
+        <item>化石</item>
+        <item>植物</item>
+        <item>昆蟲類</item>
+        <item>鳥類</item>
+        <item>小型生物</item>
+        <item>中型生物</item>
+        <item>大型生物</item>
+        <item>海洋生物</item>
+        <item>港口‧村落</item>
+        <item>地理</item>
+        <item>天文</item>
+        <item>氣象‧現象</item>
+        <item>傳說</item>
+    </string-array>
+    <integer-array name="discovery_drawable">
+        <item>@drawable/historic_site</item>
+        <item>@drawable/religious_architecture</item>
+        <item>@drawable/historical_relic</item>
+        <item>@drawable/religious_relic</item>
+        <item>@drawable/artwork</item>
+        <item>@drawable/treasure</item>
+        <item>@drawable/fossil</item>
+        <item>@drawable/plant</item>
+        <item>@drawable/insect</item>
+        <item>@drawable/bird</item>
+        <item>@drawable/small_creature</item>
+        <item>@drawable/medium_creature</item>
+        <item>@drawable/large_creature</item>
+        <item>@drawable/marine_life</item>
+        <item>@drawable/port_settlement</item>
+        <item>@drawable/geography</item>
+        <item>@drawable/astronomy</item>
+        <item>@drawable/weather_phenomena</item>
+        <item>@drawable/historic_site</item><!-- TODD change to correct image -->
+    </integer-array>
+
+    <string name="error_account_empty">帳號不可以是空白</string>
+    <string name="error_server_empty">伺服器不可以是空白</string>
+    <string name="error_name_empty">人物名稱不可以是空白</string>
+    <string name="error_character_exist">此人物已新增</string>
+    <string name="error_unknown">發生不明錯誤</string>
 </resources>

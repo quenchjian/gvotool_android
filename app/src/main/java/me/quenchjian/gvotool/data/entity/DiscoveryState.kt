@@ -1,4 +1,4 @@
-package me.quenchjian.gvotool.database.entity
+package me.quenchjian.gvotool.data.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
